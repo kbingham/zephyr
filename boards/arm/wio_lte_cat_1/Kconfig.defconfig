@@ -30,4 +30,8 @@ config I2C_1
 
 endif # I2C
 
+config ADC1_CHAN8
+	bool "Enable Channel 8 for ADC (PB0)"
+	default y
+
 endif # BOARD_WIO_LTE_CAT_1

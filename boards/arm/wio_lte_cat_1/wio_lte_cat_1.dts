@@ -55,6 +55,10 @@
 	status = "okay";
 };
 
+&adc1 {
+	status = "okay";
+};
+
 &rtc {
 	status = "okay";
 };

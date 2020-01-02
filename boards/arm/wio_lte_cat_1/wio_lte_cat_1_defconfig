@@ -22,6 +22,10 @@ CONFIG_PINMUX=y
 # enable GPIO
 CONFIG_GPIO=y
 
+# Enable ADC for Battery level monitoring
+CONFIG_ADC=y
+CONFIG_ADC1_CHAN8=y
+
 # clock configuration
 CONFIG_CLOCK_CONTROL=y
 
