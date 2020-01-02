@@ -14,6 +14,11 @@ void main(void)
 	struct device *dev = device_get_binding(DT_INST_0_BOSCH_BME680_LABEL);
 	struct sensor_value temp, press, humidity, gas_res;
 
+	printf("Getting: " DT_INST_0_BOSCH_BME680_LABEL "\n");
+
+	if (!dev)
+		printf("Failed to get device " DT_INST_0_BOSCH_BME680_LABEL "\n");
+
 	printf("Device %p name is %s\n", dev, dev->config->name);
 
 	while (1) {
