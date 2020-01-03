@@ -80,16 +80,29 @@ struct device *z_impl_device_get_binding(const char *name)
 		    (info->config->name == name)) {
 			return info;
 		}
+
+		if ((info->driver_api == NULL) &&
+		    (info->config->name == name)) {
+			printk("Found %s, but info->driver_api is NULL\n", name);
+		}
 	}
 
 	for (info = __device_init_start; info != __device_init_end; info++) {
-		if (info->driver_api == NULL) {
+		if (strcmp(name, info->config->name) != 0) {
 			continue;
 		}
 
-		if (strcmp(name, info->config->name) == 0) {
+		if (info->driver_api != NULL) {
 			return info;
+		} else {
+			printk("Matched strings on info->config->name %s but driver_api == NULL", name);
 		}
+	}
+
+	printk("Failed to find %s\n", name);
+
+	for (info = __device_init_start; info != __device_init_end; info++) {
+		printk("Device : %s\n", info->config->name);
 	}
 
 	return NULL;
